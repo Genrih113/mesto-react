@@ -9,7 +9,7 @@ function ImagePopup(props) {
         </button>
       </figure>
     </div>
-  )
+  );
 }
 
 export default ImagePopup;
