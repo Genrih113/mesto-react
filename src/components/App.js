@@ -55,6 +55,7 @@ function App() {
         <PopupWithForm
           name="profile"
           title="Редактировать профиль"
+          buttonText="Сохранить"
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           children={
@@ -69,10 +70,10 @@ function App() {
           }
         />
 
-
         <PopupWithForm
           name="place"
           title="Новое место"
+          buttonText="Создать"
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           children={
@@ -87,19 +88,10 @@ function App() {
           }
         />
 
-
-
-        <div className="popup popup_confirm">
-        <form className="popup__container popup__container_confirm" name="confirmPopupForm" noValidate>
-          <h2 className="popup__title">Вы уверены?</h2>
-          <button className="popup__submit" type="submit">Да</button>
-          <button className="popup__close popup__close_confirm" type="button" aria-label="Закрыть"></button>
-        </form>
-        </div>
-
         <PopupWithForm
           name="avatar"
           title="Обновить аватар"
+          buttonText="Сохранить"
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           children={
@@ -112,7 +104,6 @@ function App() {
         />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
 
       </div>
 

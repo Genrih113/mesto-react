@@ -71,5 +71,3 @@ function Main(props) {
 }
 
 export default Main;
-
-//{cards.map((card, i) => <Card key={i} card={card} onCardClick={props.onCardClick} />)}
