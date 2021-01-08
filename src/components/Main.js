@@ -17,13 +17,19 @@ function Main(props) {
       setUserDescription(result.about);
       setUserAvatar(result.avatar);
     })
+    .catch(err => {
+      console.log(err);
+    })
   }, []);
 
   React.useEffect(() => {
     api.getInitialCards()
     .then((result) => {
       setCards(result);
-    });
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }, []);
 
 
