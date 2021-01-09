@@ -1,5 +1,5 @@
 import React from 'react';
-import api from '../utils/Api.js';
+import api from '../utils/api.js';
 import Card from './Card.js';
 
 function Main(props) {
@@ -61,7 +61,8 @@ function Main(props) {
 
       <section>
           <ul className="places">
-            {cards.map((card, i) => <Card key={i} card={card} onCardClick={props.onCardClick} />)}
+            {cards.map((card, i) =>
+            (<Card key={card._id} card={card} onCardClick={props.onCardClick} />))}
           </ul>
       </section>
 
