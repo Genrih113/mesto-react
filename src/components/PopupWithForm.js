@@ -1,6 +1,10 @@
 function PopupWithForm(props) {
   return(
-    <div className={`popup ${props.isOpen && 'popup_opened'} popup_${props.name}`}>
+    <div className={`popup ${props.isOpen && 'popup_opened'} popup_${props.name}`}
+    onClick={(e) => {
+      if (e.target === e.currentTarget) {
+      props.onClose()
+    }}}>
       <form className={`popup__container popup__container_${props.name}`} name={`${props.name}PopupForm`} noValidate>
         <h2 className="popup__title">{props.title}</h2>
         <fieldset className="popup__content">
