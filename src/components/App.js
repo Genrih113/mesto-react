@@ -11,6 +11,7 @@ import CurrentUserContext from '../contexts/CurrentUserContext.js';
 import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
+import ConfirmPopup from './ConfirmPopup.js';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = React.useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -31,10 +34,20 @@ function App() {
     setIsAddPlacePopupOpen(true);
   };
 
+  function handlePlaceImageClick() {
+    setIsImagePopupOpen(true);
+  }
+
+  function handleOpenConfirmPopupClick() {
+    setIsConfirmPopupOpen(true);
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setIsImagePopupOpen(false);
+    setIsConfirmPopupOpen(false);
     setSelectedCard({});
   }
 
@@ -82,6 +95,12 @@ function App() {
 
   function handleCardClick(card) {
     setSelectedCard(card);
+    handlePlaceImageClick(true);
+  }
+
+  function handleCardDeleteClick(card) {
+    setSelectedCard(card);
+    handleOpenConfirmPopupClick(true);
   }
 
 
@@ -117,6 +136,7 @@ function App() {
       setCards(newCards);
     })
     .catch(err => console.log(err))
+    .finally(closeAllPopups())
   }
 
   function handleAddPlaceSubmit(newPlaceObj) {
@@ -144,7 +164,8 @@ function App() {
             onCardClick={handleCardClick}
             cards={cards}
             onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
+            //onCardDelete={handleCardDelete}
+            onCardDelete={handleCardDeleteClick}
           />
 
           <Footer />
@@ -168,8 +189,15 @@ function App() {
           />
 
           <ImagePopup
+            isOpen={isImagePopupOpen}
             card={selectedCard}
             onClose={closeAllPopups}
+          />
+
+          <ConfirmPopup
+            isOpen={isConfirmPopupOpen}
+            onClose={closeAllPopups}
+            onConfirm={() => handleCardDelete(selectedCard)}
           />
 
         </div>
