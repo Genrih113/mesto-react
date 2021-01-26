@@ -34,7 +34,8 @@ class Api {
     })
   }
 
-  editUserInfo(inputsInfoObject) {
+  editUserInfo(userInfoObj) {
+    console.log('api');
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: {
@@ -42,8 +43,8 @@ class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: inputsInfoObject.popupInputName,
-        about: inputsInfoObject.popupInputPassion
+        name: userInfoObj.name,
+        about: userInfoObj.about
       })
     })
     .then((res) => {
@@ -63,8 +64,8 @@ class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: inputsInfoObject.popupInputPlace,
-        link: inputsInfoObject.popupInputLink
+        name: inputsInfoObject.name,
+        link: inputsInfoObject.link
       })
     })
     .then((res) => {
@@ -135,7 +136,7 @@ class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: url.popupInputAvatarLink
+        avatar: url//.popupInputAvatarLink
       })
     })
     .then((res) => {

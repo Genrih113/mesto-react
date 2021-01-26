@@ -1,10 +1,10 @@
 function ImagePopup(props) {
   return (
     <div className={`popup popup_place-view ${props.card.link && 'popup_opened'}`}
-    onClick={(e) => {
-      if (e.target === e.currentTarget) {
-      props.onClose()
-    }}}>
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+        props.onClose()
+      }}}>
       <figure className="popup__figure">
         <img className="popup__place-image" src={`${props.card.link}`} alt={`${props.card.name}`} />
         <figcaption className="popup__place-caption">{props.card.name}</figcaption>
