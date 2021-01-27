@@ -1,4 +1,23 @@
+import React from 'react';
+import formValidator from '../utils/formValidator.js';
+
 function PopupWithForm(props) {
+  //validation
+  // React.useEffect(() => {
+  //   if (props.isOpen) {
+  //     formValidator.clearPopupFromErrors();
+  //     formValidator.validateForm();
+  //   }}, [props.isOpen]);
+
+  function activateValidation(isActivate) {
+    if (isActivate){
+      formValidator.clearPopupFromErrors();
+      formValidator.validateForm();
+    } else return;
+  }
+
+  activateValidation(props.isOpen);
+
   return(
     <div className={`popup ${props.isOpen && 'popup_opened'} popup_${props.name}`}
       onClick={(e) => {
