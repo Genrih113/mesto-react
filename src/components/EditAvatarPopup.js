@@ -5,10 +5,12 @@ function EditAvatarPopup (props) {
   //реф-объект для картинки аватара
   const avatarLinkRef = React.useRef();
 
+  //для обнуления поля ввода при закрытии без отправки формы, во-имя корректной работы валидации
+  if (props.isOpen) {avatarLinkRef.current.value = ''};
+
   //обработчик отправки формы со значением поля из рефа
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(avatarLinkRef.current.value);
     props.onUpdateAvatar(avatarLinkRef.current.value);
     avatarLinkRef.current.value = '';
   }

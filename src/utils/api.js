@@ -35,7 +35,6 @@ class Api {
   }
 
   editUserInfo(userInfoObj) {
-    console.log('api');
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: {

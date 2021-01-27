@@ -2,21 +2,28 @@ import React from 'react';
 import formValidator from '../utils/formValidator.js';
 
 function PopupWithForm(props) {
-  //validation
-  // React.useEffect(() => {
-  //   if (props.isOpen) {
-  //     formValidator.clearPopupFromErrors();
+
+  // function activateValidation(isActivate) {
+  //   if (isActivate){
+  //     console.log('start validation function');
+  //     console.log(props.isOpen);
+  //     console.log(`.popup__container_${props.name}`);
+  //     formValidator.selectForm(`.popup__container_${props.name}`);
+  //     //formValidator.clearPopupFromErrors();
   //     formValidator.validateForm();
-  //   }}, [props.isOpen]);
+  //   } else return;
+  // }
 
-  function activateValidation(isActivate) {
-    if (isActivate){
-      formValidator.clearPopupFromErrors();
+  //activateValidation(props.isOpen);
+
+
+  React.useEffect(() => {
+    if (props.isOpen) {
+      formValidator.selectForm(`.popup__container_${props.name}`);
       formValidator.validateForm();
-    } else return;
-  }
-
-  activateValidation(props.isOpen);
+      formValidator.clearPopupFromErrors();
+    }
+  }, [props.isOpen, props.name])
 
   return(
     <div className={`popup ${props.isOpen && 'popup_opened'} popup_${props.name}`}
@@ -33,7 +40,12 @@ function PopupWithForm(props) {
 
           <button className="popup__submit" type="submit">{props.buttonText}</button>
         </fieldset>
-        <button onClick={props.onClose} className={`popup__close popup__close_${props.name}`} type="button" aria-label="Закрыть"></button>
+        <button
+          onClick={() => {
+            props.onClose();
+          }}
+          className={`popup__close popup__close_${props.name}`} type="button" aria-label="Закрыть">
+        </button>
       </form>
     </div>
   );

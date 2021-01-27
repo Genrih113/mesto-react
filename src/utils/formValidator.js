@@ -6,17 +6,19 @@ class FormValidator {
     inactiveButtonClass,
     inputErrorClass,
     errorSelector
-    }) {          //, validatedFormElement) {
+    }) {
       this._formSelector = formSelector;
       this._inputSelector = inputSelector;
       this._submitButtonSelector = submitButtonSelector;
       this._inactiveButtonClass = inactiveButtonClass;
       this._inputErrorClass = inputErrorClass;
       this._errorSelector = errorSelector;
-      this._validatedFormElement = document.querySelector('.popup');           //validatedFormElement;
-      console.log(this._validatedFormElement);
-      this._submitButton = this._validatedFormElement.querySelector(submitButtonSelector);
-      this._inputElements = Array.from(this._validatedFormElement.querySelectorAll(inputSelector));
+  }
+
+  selectForm(formNameSelector) {
+    this._validatedFormElement = document.querySelector(formNameSelector);
+    this._submitButton = this._validatedFormElement.querySelector(this._submitButtonSelector);
+    this._inputElements = Array.from(this._validatedFormElement.querySelectorAll(this._inputSelector));
   }
 
   _showInputError(input) {

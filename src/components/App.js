@@ -81,7 +81,6 @@ function App() {
   }
 
   React.useEffect(() => {
-    console.log('api start');
     api.getUserInfo()
     .then((result) => {
       setCurrentUser(result);
@@ -140,7 +139,6 @@ function App() {
   }
 
   function handleAddPlaceSubmit(newPlaceObj) {
-    console.log(newPlaceObj);
     api.addNewCard(newPlaceObj)
     .then((result) => {
       setCards([result, ...cards]);
