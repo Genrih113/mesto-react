@@ -58,6 +58,7 @@ class FormValidator {
   }
 
   clearPopupFromErrors() {
+    if (this._inputElements.length === 0) {return};
     this._inputElements.forEach((input) => {
       this._hideInputError(input)});
     this._submitButton.disabled = true;
@@ -65,6 +66,7 @@ class FormValidator {
   }
 
   validateForm() {
+    if (this._inputElements.length === 0) {return}
     this._validatedFormElement.addEventListener('submit', (evt) => {
       evt.preventDefault()
     });
