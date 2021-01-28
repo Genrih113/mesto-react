@@ -3,20 +3,8 @@ import formValidator from '../utils/formValidator.js';
 
 function PopupWithForm(props) {
 
-  // function activateValidation(isActivate) {
-  //   if (isActivate){
-  //     console.log('start validation function');
-  //     console.log(props.isOpen);
-  //     console.log(`.popup__container_${props.name}`);
-  //     formValidator.selectForm(`.popup__container_${props.name}`);
-  //     //formValidator.clearPopupFromErrors();
-  //     formValidator.validateForm();
-  //   } else return;
-  // }
-
-  //activateValidation(props.isOpen);
-
-
+  //при открытии попапа выбирается его форма, активируется валидация,
+  //включается первичный дизейбл кнопки отправки
   React.useEffect(() => {
     if (props.isOpen) {
       formValidator.selectForm(`.popup__container_${props.name}`);

@@ -15,7 +15,7 @@ import ConfirmPopup from './ConfirmPopup.js';
 
 
 function App() {
-  // стейты и хендлеры состояний попапов
+  // стейты и хендлы состояний попапов
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -52,7 +52,7 @@ function App() {
   }
 
 
-  //стейт, хендлеры и эффект контекста-юзера
+  //стейт, хендлы и эффект контекста-юзера
   const [currentUser, setCurrentUser] = React.useState({
     about: "",
     avatar: "",
@@ -89,21 +89,21 @@ function App() {
   }, []);
 
 
-  //стейт и хендлер попапа просмотра фотографии
+  //стейт выбранной карточки и хендлы открытия попапов просмотра фотографии и подтверждения удаления
   const [selectedCard, setSelectedCard] = React.useState({});
 
   function handleCardClick(card) {
     setSelectedCard(card);
-    handlePlaceImageClick(true);
+    handlePlaceImageClick();
   }
 
   function handleCardDeleteClick(card) {
     setSelectedCard(card);
-    handleOpenConfirmPopupClick(true);
+    handleOpenConfirmPopupClick();
   }
 
 
-  //стейт, эффект и хендлеры работы с карточками мест
+  //стейт, эффект и хендлы работы с массивом карточек мест
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -128,6 +128,7 @@ function App() {
     });
   }
 
+  //хендл удаления карточки запускается из попапа подтверждения
   function handleCardDelete(card) {
     api.deleteCard(card._id)
     .then((result) => {

@@ -6,7 +6,11 @@ function ConfirmPopup(props) {
   }
 
   return (
-    <div className={`popup popup_confirm ${props.isOpen && 'popup_opened'}`}>
+    <div className={`popup popup_confirm ${props.isOpen && 'popup_opened'}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+        props.onClose();
+      }}}>
       <form
         onSubmit={handleSubmit}
         className="popup__container popup__container_confirm" name="confirmPopupForm" noValidate>
